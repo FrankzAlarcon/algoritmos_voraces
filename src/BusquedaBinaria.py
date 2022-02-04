@@ -16,8 +16,8 @@ def ingresarListaRandom():
     for a in range(1, num+1):
         aux = str(random.randint(1,1000))
         lista.append(aux)  # Ingresamos el elemento a la lista
-    print(lista)
     lista.sort()  # Ordenamos la lista utilizando la funcion sort
+    print(lista)
     return lista
 
 #Metodo de busqueda Binaria implementando la tecnica de programación Divide y Venceras
