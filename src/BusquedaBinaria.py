@@ -31,7 +31,7 @@ def busquedaBinaria(lista, numero):
         #Seleccionamos la posicion mitad
         mitad = int((inicio+final)/2)
         #Verificamos si el elemento mitad es igual al numero a buscar
-        if lista[mitad]==numero:
+        if lista[mitad]==int(numero):
             #Se retorna su posicion
             return mitad
         #Si el numero a buscar es menor que el elemento mitad de la lista, sigue buscando
