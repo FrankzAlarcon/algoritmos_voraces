@@ -22,6 +22,6 @@ def cambio(conjunto_candidatos, valor_devolver):
     else:
         return None
 
-monedas = [0.01, 0.05, 1, 0.25, 0.5, 0.1]
+monedas = [0.01, 0.05, 0.1, 0.25, 0.5, 1]
 vuelto = cambio(monedas, 2.79)
 print(vuelto)
