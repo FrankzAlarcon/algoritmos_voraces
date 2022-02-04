@@ -7,16 +7,14 @@ def ingresarLista():
         aux=input(f'Ingrese el elemento {a} : ')
         lista.append(aux) #Ingresamos el elemento a la lista
     print(lista)
-    lista.sort() #Ordenamos la lista utilizando la funcion sort
     return lista
 
 def ingresarListaRandom():
     lista = []
     num = int(input("Cuantos elementos desea ingresar: "))
     for a in range(1, num+1):
-        aux = str(random.randint(1,1000))
+        aux = random.randint(1,1000)
         lista.append(aux)  # Ingresamos el elemento a la lista
-    lista.sort()  # Ordenamos la lista utilizando la funcion sort
     print(lista)
     return lista
 
@@ -27,6 +25,7 @@ def busquedaBinaria(lista, numero):
     # Determina el rango del segmento a bucar que empieza en 0 y termina en len(lista) - 1.
     inicio = 0  
     final = len(lista)-1
+    lista.sort()  # Ordenamos la lista utilizando la funcion sort
     #Itera mientras el rango del segmento a buscar tenga elementos
     while inicio <= final:
         #Seleccionamos la posicion mitad
@@ -36,7 +35,7 @@ def busquedaBinaria(lista, numero):
             #Se retorna su posicion
             return mitad
         #Si el numero a buscar es menor que el elemento mitad de la lista, sigue buscando
-        elif lista[mitad] > numero:
+        elif lista[mitad] > int(numero):
             #se conserva el rango de la izquierda: [izq, medio-1], descartando la otra mitad de la derecha
             final = mitad-1
         #Si el numero a buscar es mayor que el elemento mitad de la lista, sigue buscando
