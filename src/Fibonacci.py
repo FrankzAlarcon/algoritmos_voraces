@@ -1,3 +1,5 @@
-def fibonacci(prev, next):
-  if prev == 0 and next == 0:
-    pass
+def fibonacci(num_terminos):
+  if (num_terminos == 0 or num_terminos == 1):
+    return 1;
+  else: 
+    return fibonacci(num_terminos - 1) + fibonacci(num_terminos - 2)
