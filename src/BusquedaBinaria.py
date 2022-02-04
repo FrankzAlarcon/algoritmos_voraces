@@ -1,84 +1,86 @@
-
-def busqueda_binaria(lista, x):
-
-    # Busca en toda la lista dividiéndola en segmentos y considerando
-    # a la lista completa como el segmento que empieza en 0 y termina
-    # en len(lista) - 1.
-
-    izq = 0  # izq guarda el índice inicio del segmento
-    der = len(lista) - 1  # der guarda el índice fin del segmento
-
-    # un segmento es vacío cuando izq > der:
-    while izq <= der:
-        # el punto medio del segmento
-        medio = (izq+der)/2
-
-        print("DEBUG:", "izq:", izq, "der:", der, "medio:", medio)
-
-        # si el medio es igual al valor buscado, lo devuelve
-        if lista[medio] == x:
-            return medio
-
-        # si el valor del punto medio es mayor que x, sigue buscando
-        # en el segmento de la izquierda: [izq, medio-1], descartando la
-        # derecha
-        elif lista[medio] > x:
-            der = medio-1
-
-        # sino, sigue buscando en el segmento de la derecha:
-        # [medio+1, der], descartando la izquierda
-        else:
-            izq = medio+1
-        # si no salió del ciclo, vuelve a iterar con el nuevo segmento
-
-    # salió del ciclo de manera no exitosa: el valor no fue encontrado
-    return -1
-
-# Código para probar la búsqueda binaria
-
+import random
+#Metodo para ingresar elementos a una lista
 def ingresarLista():
     lista=[]
     num=int(input("Cuantos elementos desea ingresar: "))
     for a in range(1,num+1):
         aux=input(f'Ingrese el elemento {a} : ')
         lista.append(aux) #Ingresamos el elemento a la lista
-    lista.sort #Ordenamos la lista utilizando la funcion sort
+    print(lista)
+    lista.sort() #Ordenamos la lista utilizando la funcion sort
     return lista
 
-def busquedaBinaria(lista, busqueda):
-    inicio = 0
-    final = len(lista-1)
-    while 
+def ingresarListaRandom():
+    lista = []
+    num = int(input("Cuantos elementos desea ingresar: "))
+    for a in range(1, num+1):
+        aux = str(random.randint(1,1000))
+        lista.append(aux)  # Ingresamos el elemento a la lista
+    print(lista)
+    lista.sort()  # Ordenamos la lista utilizando la funcion sort
+    return lista
+
+#Metodo de busqueda Binaria implementando la tecnica de programación Divide y Venceras
+#Busca en toda la lista dividiéndola en segmentos 
+def busquedaBinaria(lista, numero):
+    #Recibe una lista de elementos donde iterar y el elemento a buscar
+    # Determina el rango del segmento a bucar que empieza en 0 y termina en len(lista) - 1.
+    inicio = 0  
+    final = len(lista)-1
+    #Itera mientras el rango del segmento a buscar tenga elementos
+    while inicio <= final:
+        #Seleccionamos la posicion mitad
+        mitad = int((inicio+final)/2)
+        #Verificamos si el elemento mitad es igual al numero a buscar
+        if lista[mitad]==numero:
+            #Se retorna su posicion
+            return mitad
+        #Si el numero a buscar es menor que el elemento mitad de la lista, sigue buscando
+        elif lista[mitad] > numero:
+            #se conserva el rango de la izquierda: [izq, medio-1], descartando la otra mitad de la derecha
+            final = mitad-1
+        #Si el numero a buscar es mayor que el elemento mitad de la lista, sigue buscando
+        else:
+            #se conserva el rango de la derecha: [izq, medio-1], descartando la otra mitad de la izquierda
+            inicio = mitad+1
+        # si no salió del ciclo, vuelve a iterar con el nuevo rango definico
+
+    # Si salió del ciclo sin retorn nada, el valor no se encuentra en la lista retornando -1
+    return -1
 
 def menu():
     print('''
     \t*** Menu *** \t 
     1. Ingresar nueva lista
-    2. Busqueda Binaria
-    3. Salir
+    2. Ingresar Lista Random
+    3. Busqueda Binaria
+    4. Salir
     ''')
     des=int(input("Seleccione una opcion: "))
     return des
 
 def main():
     des=0
-    while(des!=3):
+    listaAux = []
+    while(des!=4):
         des=menu()
+        #Opcion 1
         if des==1:
             listaAux = ingresarLista()
-            print(listaAux)
-        elif des==2:
-
-            print('2')
+        #Opcion 2
+        elif des == 2:
+            listaAux = ingresarListaRandom()
+        #Opcion 3
         elif des==3:
+            num=input('Por favor ingrese el elemento a buscar: ')
+            auxiliar=int(busquedaBinaria(listaAux, num))
+            print(listaAux)
+            if(auxiliar==-1):
+                print("No se encontro el elemento en la lista")
+            else:
+                print(f'El elemento {num} se encuentra en la posición {auxiliar+1}')
+        #Opcion 4
+        elif des==4:
             print('Saliendo....')
         
-
-# def main():
-#     lista = input("Dame una lista ordenada ([[]] para terminar): ")
-#     while lista != [[]]:
-#         x = input("¿Valor buscado?: ")
-#         resultado = busqueda_binaria(lista, x)
-#         print "Resultado:", resultado
-#         lista = input("Dame una lista ordenada ([[]] para terminar): ")
 main()
