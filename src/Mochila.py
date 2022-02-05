@@ -1,35 +1,36 @@
-class elemento:
+class Elemento:
     def __init__(self, nombre, peso, beneficio):
         self.nombre = nombre
         self.peso = peso
         self.beneficio = beneficio
         self.beneficioxpeso = beneficio/peso
 
+    def __str__(self):
+        return f'Elemento: {self.nombre} Peso: {self.peso} Beneficio: {self.beneficio} '
+
 
 def llenarObjetos(numElementos):
     objetos = []
     #Creamos una lista de nombres, pesos y beneficios
-    nombres = [], pesos = [], benificios = []
+    nombres, pesos, beneficios = [], [], []
     #Identificamos en una sola linea ingresada por teclado cada nombre, pesos y beneficios  de los elementos separado por ", " 
-    nombres = input('Ingrese el vector de elementos: *separados por una coma y espacio (, ) * = ').split(sep=', ')
-    pesos = input('Ingrese el vector de elementos: *separados por una coma y espacio (, ) * = ').split(sep=', ')
-    benificios = input('Ingrese el vector de elementos: *separados por una coma y espacio (, ) * = ').split(sep=', ')
+    nombres = input('Ingrese el vector de elementos: *separados por una coma y espacio (, ) * : ').split(sep=', ')
+    pesos = input('Ingrese el vector de pesss: *separados por una coma y espacio (, ) * : ').split(sep=', ')
+    beneficios = input('Ingrese el vector de beneficios: *separados por una coma y espacio (, ) * : ').split(sep=', ')
     #Si existieron más elementos ingresados se redifine la lista con el num correcto
     nombres = nombres[:numElementos]
     pesos = pesos[:numElementos]
-    
-   
+    beneficios = beneficios[:numElementos]
+    #Vamos a iterar en las listas anteriores para crear objetos de tipo Elemento y almacenarlos en una nueva lista
+    for a in range(numElementos):
+        Auxiliar = Elemento(nombres[a],int(pesos[a]),int(beneficios[a]))
+        objetos.append(Auxiliar)
+
+    for x in objetos:
+        print(x)
 
 
-    
-    
-    for x in range(0, len(nombres)):
 
-
-    peso = input('Ingrese el peso del elemento: ')
-    for elemento in range (numElementos):
-        print
-        
 
 
 
@@ -38,8 +39,6 @@ def main():
     llenarObjetos(p)
  
 
-
-['1', '2', '3, 4, 5']
 
 main()
 
