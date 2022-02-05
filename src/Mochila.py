@@ -35,11 +35,13 @@ def llenarObjetos(numElementos):
 def llenarObjetosLista(listaEntrada):
     objetos = []
     for a in listaEntrada:
+        #Va tomando el correspondiente indice de la listaEntrada y asignando a los argumentos para crear un objeto e tipo Elemento
         Auxiliar = Elemento(a[0], int(a[1]), int(a[2]))
+        #En la lista va agregando los objetos de tipo Elemento
         objetos.append(Auxiliar)
     return objetos
 
-
+#Funcion para ordenar la lista de Elementos que recibe mediante el atributo beneficioxpeso 
 def ordenar(elementos):
     ordenados = sorted(elementos, key=attrgetter('beneficioxpeso'))
     print('Elementos Ordenados')
@@ -47,6 +49,7 @@ def ordenar(elementos):
         print(x)
     return ordenados
 
+#Funcion que resulve el problema planteado 
 def funcionObjetivo(solucion, objetos):
     tamanioMochila = int(input('Ingrese el tamanio de la mochila: '))
     pesoActual = 0
@@ -71,10 +74,23 @@ def funcionObjetivo(solucion, objetos):
         i= i-1
     return solucion
 
+#Funcion para imprimir en un formato el conjunto solucion
+def mostrarSolucion(solucion, objetos):
+    solucionImpresa = ""
+    total = 0
+    for a in solucion:
+        solucionImpresa = solucionImpresa + solucion
+
+# Funcion para imprimir opciones, retorna el valor ingesado por teclado
+def menu():
+    des = input(''' \tMenu 
+    1. Ingresar valores manualmente
+    2. Valores previamente definidos
+    Seleccione Una Opcion: ''')
+    return int(des)
 
 def main():
     des= menu()
-
     objetos = []  # Conjunto Objetos
     if(des==1):
         p = int(input('Ingrese el numero de objetos que existen: ')) #Preguntamos cuantos objetos existen
@@ -98,18 +114,7 @@ def main():
         solucion2 = funcionObjetivo(solucion, objetos)
         for x in solucion2:
             print(x)
-def mostrarSolucion(solucion, objetos):
-    solucionImpresa = ""
-    total = 0
-    for a in solucion:
-        solucionImpresa = solucionImpresa + solucion 
 
-def menu():
-    des= input(''' \tMenu 
-    1. Ingresar valores manualmente
-    2. Valores previamente definidos
-    Seleccione Una Opcion: ''')
-    return int(des)
 
 
 
