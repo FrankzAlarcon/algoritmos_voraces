@@ -78,8 +78,11 @@ def funcionObjetivo(solucion, objetos):
 def mostrarSolucion(solucion, objetos):
     solucionImpresa = ""
     total = 0
-    for a in solucion:
-        solucionImpresa = solucionImpresa + solucion
+    for a in range(len(solucion)):
+        solucionImpresa = solucionImpresa + str(solucion[a]) +' .......'
+        total += (solucion[a]) * objetos[a].beneficio
+    solucionImpresa = solucionImpresa + '\nBeneficio Total: '+ str(total)
+    return solucionImpresa
 
 # Funcion para imprimir opciones, retorna el valor ingesado por teclado
 def menu():
@@ -101,22 +104,16 @@ def main():
         objetos=ordenar(objetos)
         #Funcion para reslver el problema
         solucion = funcionObjetivo(solucion, objetos)
-        for x in solucion:
-            print(x)
+        print(mostrarSolucion(solucion, objetos))
     else:
         objetosEntrada = [('1', 18, 25), ('2', 15, 24), ('3', 10, 15), ]
         p = int(len(objetosEntrada))
         solucion = [None] * p  # Conjunto Solucion Vacio
-        print(solucion)
-        print(len(solucion))
         objetos = llenarObjetosLista(objetosEntrada) 
         objetos = ordenar(objetos)
-        solucion2 = funcionObjetivo(solucion, objetos)
-        for x in solucion2:
-            print(x)
-
-
-
+        solucion = funcionObjetivo(solucion, objetos)
+        #Mostramos la solucion
+        print(mostrarSolucion(solucion, objetos))
 
 main()
 
