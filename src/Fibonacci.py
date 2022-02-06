@@ -10,3 +10,12 @@ def fibonacci(num_termino):
   else: 
     #Suma los dos numeros anteriores
     return fibonacci(num_termino - 1) + fibonacci(num_termino - 2)
+
+def mostrarSerieFibonacci(num_datos):
+    secuenciaFibonacci = "" 
+    for number in range(num_datos):
+      secuenciaFibonacci = secuenciaFibonacci + str(fibonacci(number)) + ", "
+    print(str(secuenciaFibonacci[:-2]))
+
+if __name__ == "__main__": 
+  mostrarSerieFibonacci(10)
