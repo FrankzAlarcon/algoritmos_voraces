@@ -1,6 +1,4 @@
 from operator import  attrgetter
-
-from numpy import object0
 class Elemento:
     def __init__(self, nombre, peso, beneficio):
         self.nombre = nombre
