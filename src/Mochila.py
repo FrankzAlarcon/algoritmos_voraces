@@ -47,8 +47,11 @@ def ordenar(elementos):
         print(x)
     return ordenados
 
-#Funcion que resulve el problema planteado 
+complejidad = 0
+#Funcion que resulve el problema planteado
+# Teorema: si se ordenan los objetos de forma decreciente en cuanto a su relación (utilidad/ponderación= bi/ci), y se introducen en la mochila enteros en este orden mientras quepan, y cuando no quede capacidad para uno entero se añade la porción que aún tenga cabida, el resultado al que se llega es una solución óptima.
 def funcionObjetivo(solucion, objetos):
+    global complejidad
     tamanioMochila = int(input('Ingrese el tamanio de la mochila: '))
     pesoActual = 0
     #Comenzamos a iterar desde atrás por que allí se ecnuentran los elementos con mayor beneficio por unidad.
@@ -62,6 +65,7 @@ def funcionObjetivo(solucion, objetos):
             pesoActual += objetos[i].peso
             pocentaje = str(solucion[i] *100)
             print(f' peso actual: {pesoActual} || porcentaje tomado del objeto {objetos[i].nombre} : {pocentaje}% \n')
+            complejidad = complejidad + 1
         else: #En caso que sea mayor al peso de la mochila
             #Tomamos una parte del objeto para completar el tamnio mochila
             solucion[i] = (tamanioMochila-pesoActual)/objetos[i].peso
@@ -69,6 +73,7 @@ def funcionObjetivo(solucion, objetos):
             pocentaje = str(solucion[i] * 100)
             pesoActual += ((tamanioMochila-pesoActual)/objetos[i].peso)*objetos[i].peso
             print(f' peso actual: {pesoActual} || porcentaje tomado del objeto {objetos[i].nombre} : {pocentaje}% \n')
+            complejidad = complejidad + 1
         i= i-1
     return solucion
 
@@ -91,6 +96,7 @@ def menu():
     return int(des)
 
 def main():
+    global complejidad
     des= menu()
     objetos = []  # Conjunto Objetos
     if(des==1):
@@ -103,6 +109,7 @@ def main():
         #Funcion para reslver el problema
         solucion = funcionObjetivo(solucion, objetos)
         print(mostrarSolucion(solucion, objetos))
+        print('Tiene una complejidad total de: ' + str(complejidad))
     else:
         objetosEntrada = [('1', 18, 25), ('2', 15, 24), ('3', 10, 15), ]
         p = int(len(objetosEntrada))
@@ -112,6 +119,7 @@ def main():
         solucion = funcionObjetivo(solucion, objetos)
         #Mostramos la solucion
         print(mostrarSolucion(solucion, objetos))
+        print('Tiene una complejidad total de: ' + str(complejidad))
 
 main()
 
