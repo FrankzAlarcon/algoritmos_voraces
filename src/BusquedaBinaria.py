@@ -27,25 +27,21 @@ def busquedaBinariaRecursiva(lista, bajo, alto, numero):
     #Bajo y Alto equivalen a los valores de las posiciones extremas del rango de la lista
     # Determina la posicion mitad de la lista  
     if bajo > alto: #Caso Base
-        print('base')
         #Si el numero a buscar no se encontró en la lista
         return -1
     mitad = (int(bajo) + int(alto)) // 2 #Calculamos la poscion media de la lista
     if lista[mitad] == numero:
-        print('bingo')
-        print(mitad)
         #Si se ecnontró el numero a buscar en la lista
         return mitad
     elif lista[mitad] < numero: 
         #Si el numero a buscar es mayor que el elemento mitad de la lista, sigue buscando
         #se conserva el rango desde la mitad hacia la derecha [medio+1, derecha], descartando la otra mitad izquierda
-        print('mayor')
-        busquedaBinariaRecursiva(lista, mitad+1, alto, numero)
+        return busquedaBinariaRecursiva(lista, mitad+1, alto, numero)
     else:
         #Caso Contrario, Si el numero a buscar es menor que el elemento mitad de la lista, sigue buscando
         #se conserva el rango desde la mitad hacia la izquierda [izquierda, medio-1] descartando la otra mitad derecha
-        print('menor')
-        busquedaBinariaRecursiva(lista, bajo, mitad-1, numero)
+
+        return busquedaBinariaRecursiva(lista, bajo, mitad-1, numero)
     
 def menu():
     print('''
