@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 from cmath import log
 # Definicion de la funcion es_solucion, ingresando como parametros un arrary que contiene el dato y la cantidad, y el valor a devolver
+=======
+complejidad = 0
+# Definicion de la funcion es_solucion, ingresando como parametros un arraryque contiene el dato y la cantidad, y el valor a devolver
+>>>>>>> 65856048c2912a1dd0d4295d2a0fd7f26f1b36b5
 def es_solucion(solucion, valor_devolver):
     #Inicializacion de total en 0
     total = 0
@@ -16,6 +21,7 @@ def es_solucion(solucion, valor_devolver):
         return False
  #Define la funcion que imprime un vector que almacena vectores donde se imprime el valor de la moneda y la cantidad de onedas
 def cambio(conjunto_candidatos, valor_devolver):
+<<<<<<< HEAD
     solucion = []
     #ordenamos el vector con la finalidad que en un inicio el algoritmo escoga las monedas de denominacion mas altas para que se use 
     #La menor cantidad de monedas posible
@@ -23,6 +29,11 @@ def cambio(conjunto_candidatos, valor_devolver):
 #inicializa el restante igualando con el valor_devolver ingresado
     restante = valor_devolver
 #Realiza repeticiones mientras el vector conjunto_candidatos tenga datos, y es_solucion con los valores hasta ese entonces del vector solucion sea falso 
+=======
+    global complejidad
+    solucion = [] #Conjunto Solucion
+    restante = valor_devolver #El vuelto restante
+>>>>>>> 65856048c2912a1dd0d4295d2a0fd7f26f1b36b5
     while conjunto_candidatos and not es_solucion(solucion, valor_devolver):
         #Saca datos del vector conjunto_candidatos
         dato = conjunto_candidatos.pop()
@@ -34,6 +45,7 @@ def cambio(conjunto_candidatos, valor_devolver):
             solucion.append([dato, cantidad])
             #el restante es a partir de reedondear a dos decimales el restante menos el dato multiplicada por la cantidad
             restante = round(restante - (dato * cantidad), 2)
+            complejidad = complejidad + 1
     #Si es_solucion da el valor de verdadero implica que existe una forma de devolver el valor, caso contrario  imprimie none        
     if(es_solucion(solucion, valor_devolver)):
         #Calculo de complejidad
@@ -43,6 +55,13 @@ def cambio(conjunto_candidatos, valor_devolver):
     else:
         return None
 
+<<<<<<< HEAD
 monedas = [0.01, 0.05, 1, 0.25, 0.5, 0.1]
 vuelto = cambio(monedas, 0.75)
 print("La cantidad necesaria para devolver el vuelto es: ", vuelto)
+=======
+monedas = [0.01, 0.05, 0.1, 0.25, 0.5, 1]
+vuelto = cambio(monedas, 2.5)
+print(vuelto)
+print('Tiene una complejidad total de: ' + str(complejidad))
+>>>>>>> 65856048c2912a1dd0d4295d2a0fd7f26f1b36b5
